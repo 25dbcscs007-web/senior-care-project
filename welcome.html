@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senior Care Services</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  display:flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width:230px;
+  background:#1e3a8a;
+  color:white;
+  height:100vh;
+  padding:20px;
+  position:fixed;
+}
+
+.sidebar h2 {
+  margin-bottom:20px;
+}
+
+.sidebar button {
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border:none;
+  border-radius:8px;
+  background:white;
+  color:#1e3a8a;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Main */
+.main {
+  margin-left:230px;
+  width:100%;
+}
+
+/* Sections */
+.section {
+  padding:40px;
+}
+
+/* Hero */
+.hero {
+  background:linear-gradient(to right,#2563eb,#60a5fa);
+  color:white;
+  text-align:center;
+}
+
+.hero img {
+  width:100%;
+  max-height:300px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+/* Cards */
+.card {
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-top:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Grid */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.grid img {
+  width:100%;
+  border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Care+ 💙</h2>
+
+  <button onclick="go('ui.html')">🔐 Login</button>
+  <button onclick="go('dashboard.html')">📊 Dashboard</button>
+  <button onclick="go('services.html')">🛠 Services</button>
+  <button onclick="go('about.html')">ℹ About</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HERO -->
+  <div class="section hero">
+    <h1>Senior Care Services 💙</h1>
+    <p>Making elderly life safe, simple & supported</p>
+
+    <img src="https://images.unsplash.com/photo-1581579185169-3b2c5b5d2c65" />
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <h2>👴 About Our Platform</h2>
+    <div class="card">
+      Our platform helps senior citizens get daily support like medical help,
+      home care, and emergency services — all in one place.
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section">
+    <h2>🚀 Our Services</h2>
+
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1580281657527-47f249e6c54d">
+        <h3>🏥 Medical Support</h3>
+        <p>24x7 pharmacy & hospital help nearby.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e">
+        <h3>🍲 Home Assistance</h3>
+        <p>Cooking, cleaning & daily help services.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4">
+        <h3>🚕 Transport</h3>
+        <p>Easy local rides for hospital & travel.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528">
+        <h3>⏰ Health Reminders</h3>
+        <p>Medicine alerts & appointment tracking.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="section">
+    <h2>💡 Why Choose Us?</h2>
+
+    <div class="grid">
+      <div class="card">✔ Easy to use for elders</div>
+      <div class="card">✔ Safe & trusted services</div>
+      <div class="card">✔ All-in-one platform</div>
+      <div class="card">✔ Emergency ready</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function go(page){
+  window.location.href = page;
+}
+</script>
+
+</body>
+</html>

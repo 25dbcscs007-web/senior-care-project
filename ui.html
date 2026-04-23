@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senior Care Services - Login</title>
+
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #e5e7eb;
+      --danger: #dc2626;
+      --radius: 18px;
+      --shadow: 0 12px 30px rgba(0,0,0,0.08);
+      --fontScale: 1;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: calc(18px * var(--fontScale));
+      line-height: 1.4;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .topbar {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: calc(24px * var(--fontScale));
+    }
+
+    .tools {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button, select, input {
+      font-size: calc(18px * var(--fontScale));
+    }
+
+    .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-ghost {
+      background: #eef2ff;
+      color: #1e3a8a;
+      border: 1px solid #c7d2fe;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: var(--danger);
+      border: 1px solid #fecaca;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-top: 6px;
+      margin-bottom: 18px;
+      font-size: calc(16px * var(--fontScale));
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      outline: none;
+      background: white;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .row .btn {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .helper {
+      margin-top: 16px;
+      padding: 14px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: calc(16px * var(--fontScale));
+      color: #374151;
+    }
+
+    .links {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: calc(16px * var(--fontScale));
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .roleBox {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fcfcff;
+    }
+
+    .radioRow {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .radioItem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .radioItem input {
+      width: auto;
+      transform: scale(1.4);
+    }
+
+    .msg {
+      margin-top: 12px;
+      font-weight: 700;
+      color: var(--danger);
+      display: none;
+    }
+
+    .success {
+      color: #166534;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card" role="region" aria-label="Login Card">
+      
+      <div class="topbar">
+        <div>
+          <div class="brand" id="titleText">Senior Care Services</div>
+          <div class="subtitle" id="subtitleText">
+            Health & Home services for old age people (easy & safe)
+          </div>
+        </div>
+
+        <div class="tools">
+          <button class="btn btn-ghost" id="langBtn">हिंदी</button>
+          <button class="btn btn-ghost" id="fontBtn">A+</button>
+          <button class="btn btn-ghost" id="speakBtn">🔊 Help</button>
+        </div>
+      </div>
+
+      <form id="loginForm">
+        <label id="emailLabel" for="email">Mobile Number / Email</label>
+        <input
+          id="email"
+          type="text"
+          placeholder="Enter mobile or email"
+          autocomplete="username"
+          required
+        />
+
+        <label id="passLabel" for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        />
+
+        <div class="roleBox">
+          <div style="font-weight:800;" id="roleTitle">Login as</div>
+          <div class="radioRow">
+            <label class="radioItem">
+              <input type="radio" name="role" value="customer" checked />
+              <span id="roleCustomer">Customer</span>
+            </label>
+
+            <label class="radioItem">
+              <input type="radio" name="role" value="provider" />
+              <span id="roleProvider">Service Provider</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn-primary" type="submit" id="loginBtn">
+            Login
+          </button>
+          <button class="btn btn-danger" type="button" id="emergencyBtn">
+            Emergency Help
+          </button>
+        </div>
+
+        <div class="links">
+          <a href="#" id="forgotLink">Forgot Password?</a>
+          <a href="register.html" id="registerLink">Create New Account</a>
+        </div>
+
+        <div class="helper" id="helperBox">
+          Tip: If you are a service provider, you can register your skills and
+          customers can hire you on hourly basis.
+        </div>
+
+        <div class="msg" id="msgBox"></div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+    let isHindi = false;
+    let fontScale = 1;
+
+    
+  const firebaseConfig = {
+  apiKey: "AIzaSyAlOkhhqGknbp3_C-5R__BNqGeJjC_hA6o",
+  authDomain: "elderly-care-5eaee.firebaseapp.com",
+  projectId: "elderly-care-5eaee",
+  storageBucket: "elderly-care-5eaee.firebasestorage.app",
+  messagingSenderId: "340135035575",
+  appId: "1:340135035575:web:85ac4c9cdb4cc7b7e14332"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+    const T = {
+      en: {
+        title: "Senior Care Services",
+        subtitle: "Health & Home services for old age people (easy & safe)",
+        emailLabel: "Mobile Number / Email",
+        emailPH: "Enter mobile or email",
+        passLabel: "Password",
+        passPH: "Enter password",
+        roleTitle: "Login as",
+        customer: "Customer",
+        provider: "Service Provider",
+        login: "Login",
+        emergency: "Emergency Help",
+        forgot: "Forgot Password?",
+        register: "Create New Account",
+        tip: "Tip: If you are a service provider, you can register your skills and customers can hire you on hourly basis.",
+        speak: "Help",
+        lang: "हिंदी",
+        error: "Please enter correct details (demo validation).",
+        success: "Login successful (demo). Next: dashboard page."
+      },
+      hi: {
+        title: "सीनियर केयर सर्विस",
+        subtitle: "बुज़ुर्गों के लिए हेल्थ और घर की सेवाएँ (आसान और सुरक्षित)",
+        emailLabel: "मोबाइल नंबर / ईमेल",
+        emailPH: "मोबाइल या ईमेल लिखें",
+        passLabel: "पासवर्ड",
+        passPH: "पासवर्ड लिखें",
+        roleTitle: "किस रूप में लॉगिन करें",
+        customer: "ग्राहक",
+        provider: "सेवा प्रदाता",
+        login: "लॉगिन",
+        emergency: "आपातकालीन सहायता",
+        forgot: "पासवर्ड भूल गए?",
+        register: "नया अकाउंट बनाएं",
+        tip: "टिप: अगर आप सेवा प्रदाता हैं तो आप अपनी स्किल्स रजिस्टर कर सकते हैं और ग्राहक आपको घंटे के हिसाब से हायर कर सकते हैं।",
+        speak: "सहायता",
+        lang: "English",
+        error: "कृपया सही जानकारी भरें (डेमो वैलिडेशन)।",
+        success: "लॉगिन सफल (डेमो)। अगला पेज: डैशबोर्ड।"
+      }
+    };
+
+    const el = (id) => document.getElementById(id);
+
+    function applyLang() {
+      const lang = isHindi ? "hi" : "en";
+      el("titleText").innerText = T[lang].title;
+      el("subtitleText").innerText = T[lang].subtitle;
+
+      el("emailLabel").innerText = T[lang].emailLabel;
+      el("email").placeholder = T[lang].emailPH;
+
+      el("passLabel").innerText = T[lang].passLabel;
+      el("password").placeholder = T[lang].passPH;
+
+      el("roleTitle").innerText = T[lang].roleTitle;
+      el("roleCustomer").innerText = T[lang].customer;
+      el("roleProvider").innerText = T[lang].provider;
+
+      el("loginBtn").innerText = T[lang].login;
+      el("emergencyBtn").innerText = T[lang].emergency;
+
+      el("forgotLink").innerText = T[lang].forgot;
+      el("registerLink").innerText = T[lang].register;
+
+      el("helperBox").innerText = T[lang].tip;
+
+      el("langBtn").innerText = T[lang].lang;
+      el("speakBtn").innerText = "🔊 " + T[lang].speak;
+    }
+
+    function applyFontScale() {
+      document.documentElement.style.setProperty("--fontScale", fontScale);
+    }
+
+    // Toggle Language
+    el("langBtn").addEventListener("click", () => {
+      isHindi = !isHindi;
+      applyLang();
+    });
+
+    // Increase font size (toggle between 1 and 1.2)
+    el("fontBtn").addEventListener("click", () => {
+      fontScale = fontScale === 1 ? 1.2 : 1;
+      el("fontBtn").innerText = fontScale === 1 ? "A+" : "A-";
+      applyFontScale();
+    });
+
+    // Speech help (basic browser TTS)
+    el("speakBtn").addEventListener("click", () => {
+      const lang = isHindi ? "hi" : "en";
+      const text = isHindi
+        ? "यह लॉगिन पेज बुज़ुर्गों के लिए बनाया गया है। मोबाइल या ईमेल और पासवर्ड भरें। ग्राहक या सेवा प्रदाता चुनें। फिर लॉगिन दबाएं।"
+        : "This login page is made for senior citizens. Enter mobile or email and password. Choose customer or service provider. Then press login.";
+
+      if ("speechSynthesis" in window) {
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = isHindi ? "hi-IN" : "en-IN";
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utter);
+      } else {
+        alert("Speech not supported in this browser.");
+      }
+    });
+
+    // Emergency button
+    el("emergencyBtn").addEventListener("click", () => {
+      alert(isHindi
+        ? "आपातकालीन सहायता: 108 / 112 पर कॉल करें (डेमो)"
+        : "Emergency Help: Call 108 / 112 (demo)");
+    });
+
+    // Simple demo login validation
+    el("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const msg = el("msgBox");
+  msg.style.display = "block";
+
+  const email = el("email").value.trim();
+  const pass = el("password").value.trim();
+
+  if (email.length < 4 || pass.length < 4) {
+    msg.className = "msg";
+    msg.innerText = isHindi ? T.hi.error : T.en.error;
+    return;
+  }
+
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+
+    msg.className = "msg success";
+    msg.innerText = isHindi ? T.hi.success : T.en.success;
+
+    // ✅ Redirect ONLY after success
+    window.location.href = "dashboard.html";
+
+  } catch (err) {
+    msg.className = "msg";
+    msg.innerText = "Invalid email or password";
+    console.error(err);
+  }
+});
+    // Apply defaults
+    applyLang();
+    applyFontScale();
+  </script>
+</body>
+</html>

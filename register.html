@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Account</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2563eb, #1e3a8a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      width: 360px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .msg {
+      margin-top: 12px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .link a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2>Create Account</h2>
+
+    <input id="email" type="email" placeholder="Enter Email" />
+    <input id="password" type="password" placeholder="Password (min 6)" />
+    <input id="confirm" type="password" placeholder="Confirm Password" />
+
+    <button id="registerBtn">Sign Up</button>
+
+    <div class="msg" id="msg"></div>
+
+    <div class="link">
+      Already have account? <a href="ui.html">Login</a>
+    </div>
+  </div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAlOkhhqGknbp3_C-5R__BNqGeJjC_hA6o",
+  authDomain: "elderly-care-5eaee.firebaseapp.com",
+  projectId: "elderly-care-5eaee",
+  storageBucket: "elderly-care-5eaee.firebasestorage.app",
+  messagingSenderId: "340135035575",
+  appId: "1:340135035575:web:85ac4c9cdb4cc7b7e14332"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const msg = document.getElementById("msg");
+
+document.getElementById("registerBtn").addEventListener("click", async () => {
+
+  const email = document.getElementById("email").value.trim();
+  const pass = document.getElementById("password").value.trim();
+  const confirm = document.getElementById("confirm").value.trim();
+
+  // Validation
+  if (!email || !pass || !confirm) {
+    msg.style.color = "red";
+    msg.innerText = "Fill all fields!";
+    return;
+  }
+
+  if (pass.length < 6) {
+    msg.style.color = "red";
+    msg.innerText = "Password must be at least 6 characters";
+    return;
+  }
+
+  if (pass !== confirm) {
+    msg.style.color = "red";
+    msg.innerText = "Passwords do not match";
+    return;
+  }
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, pass);
+
+    msg.style.color = "green";
+    msg.innerText = "Account created successfully 🎉";
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1500);
+
+  } catch (error) {
+    msg.style.color = "red";
+    msg.innerText = error.message;
+  }
+});
+</script>
+
+</body>
+</html>
